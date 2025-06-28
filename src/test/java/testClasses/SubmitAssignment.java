@@ -13,6 +13,7 @@ public class SubmitAssignment extends BaseClass {
         System.out.println("Hello");
         HomePage po = new HomePage(driver);
         po.clickNifty50();
+
         Nifty50StocksPage.Click_On_ViewMore();
 
 //        driver.switchTo().window("NSE - National Stock Exchange of India Ltd: Live Share/Stock Market News &amp; Updates, Quotes- Nseindia.com");
