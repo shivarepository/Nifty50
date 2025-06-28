@@ -1,15 +1,16 @@
 package testComponents;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import java.io.*;
 import java.util.Properties;
 
 public class BaseClass {
@@ -40,4 +41,12 @@ public class BaseClass {
 //    {
 //        driver.quit();
 //    }
+
+    public String getScreenShot(WebDriver driver) throws IOException {
+        TakesScreenshot screenShot = (TakesScreenshot)driver;
+        File srcFile = screenShot.getScreenshotAs(OutputType.FILE);
+        File destFile = new File(System.getProperty("user.dir") + "//screenShots" + ".png");
+        FileUtils.copyDirectory(srcFile, destFile);
+        return System.getProperty("user.dir") + "//screenShots" + ".png";
+    }
 }
