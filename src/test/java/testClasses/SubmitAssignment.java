@@ -19,11 +19,9 @@ public class SubmitAssignment extends BaseClass {
         HomePage po = new HomePage(driver);
         po.clickNifty50();
 
-//        Nifty50StocksPage.Click_On_ViewMore();
-
-//        driver.switchTo().window("NSE - National Stock Exchange of India Ltd: Live Share/Stock Market News &amp; Updates, Quotes- Nseindia.com");
-//        driver.findElement(By.xpath("(//a[text()='View More'])[1]")).click();
-//        driver.switchTo().window("Equity Market Watch, Live Nifty & Sensex Charts & News - NSE India");
+//        driver.findElement(By.xpath("//*[@class='market_turnover']//span[text()='View More']")).isEnabled();
+//        driver.findElement(By.xpath("//*[@class='market_turnover']//span[text()='View More']")).click();
+        Thread.sleep(20000);
 
         Set<String> parent = driver.getWindowHandles();
         Set<String> child = driver.getWindowHandles();
@@ -37,9 +35,11 @@ public class SubmitAssignment extends BaseClass {
                 System.out.println(driver.switchTo().window(child_window).getTitle());
                 Thread.sleep(10000);
                 JavascriptExecutor js = (JavascriptExecutor)driver;
-                js.executeScript("window.scrollBy(0,1400)","");
-                Thread.sleep(10000);
-                driver.findElement(By.xpath("//a[text()='View More'])[1]")).click();
+                js.executeScript("window.scrollBy(0,1500)","");
+                Thread.sleep(20000);
+                driver.findElement(By.xpath("//span[text()='View More']")).isEnabled();
+                driver.findElement(By.xpath("//span[text()='View More']")).click();
+                Thread.sleep(20000);
             }
         }
         getScreenShot(driver);

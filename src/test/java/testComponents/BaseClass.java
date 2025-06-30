@@ -36,17 +36,19 @@ public class BaseClass {
         driver = Initialize();
     }
 
-//    @AfterClass
-//    public void tearDown()
-//    {
-//        driver.quit();
-//    }
+    @AfterClass
+    public void tearDown()
+    {
+        driver.quit();
+    }
 
     public String getScreenShot(WebDriver driver) throws IOException {
         TakesScreenshot screenShot = (TakesScreenshot)driver;
         File srcFile = screenShot.getScreenshotAs(OutputType.FILE);
-        File destFile = new File(System.getProperty("user.dir") + "//screenShots" + ".png");
+//        File destFile = new File(System.getProperty("user.dir") + "//screenshot" + ".png");
+        File destFile = new File("C:\\Users\\Administrator\\IdeaProjects\\SDETAssignment\\screenshot" + ".png");
         FileUtils.copyDirectory(srcFile, destFile);
-        return System.getProperty("user.dir") + "//screenShots" + ".png";
+        return System.getProperty("C:\\Users\\Administrator\\IdeaProjects\\SDETAssignment\\screenshot" + ".png");
+
     }
 }

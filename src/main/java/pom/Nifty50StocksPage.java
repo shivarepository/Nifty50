@@ -18,19 +18,21 @@ public class Nifty50StocksPage {
         PageFactory.initElements(driver,this);
     }
 
-    @FindBy(xpath = "(//a[text()='View More'])[1]")
+    @FindBy(xpath = "//span[text()='View More']")
     static WebElement ViewMoreButton;
 
     public static void Click_On_ViewMore() throws InterruptedException {
         Thread.sleep(5000);
         JavascriptExecutor js = (JavascriptExecutor)driver;
-//        js.executeScript("arguments[0].scrollIntoView();", ViewMoreButton);
+        js.executeScript("arguments[0].scrollIntoView();", ViewMoreButton);
         Actions action = new Actions(driver);
-        action.contextClick();
-        action.scrollToElement(ViewMoreButton);
-        js.executeScript("window.scrollBy(0,850)","");
+        action.moveToElement(ViewMoreButton).click(ViewMoreButton);
+        action.perform();
+//        action.contextClick();
+//        action.scrollToElement(ViewMoreButton);
+//        js.executeScript("window.scrollBy(1190,20)","");
 //        ViewMoreButton.isDisplayed();
-        ViewMoreButton.click();
+//        ViewMoreButton.click();
     }
 
 }
